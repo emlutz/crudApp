@@ -1,0 +1,36 @@
+<% include partials/header.ejs %>
+  <div class="table-wrapper">
+    <% if (tasks.length > 0) {%>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Assigned To</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Task Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.forEach((task, index) => { %>
+          <tr>
+            <th><%= task.id %></th>
+            <th><%= task.user_name %></th>
+            <td><%= task.task_name %></td>
+            <td><%= task.task_description %></td>
+            <td><%= task.task_deadline %></td>
+            <td>
+              <a href="/edit/<%= task.id %>" target="_blank" rel="noopener" class="table">Edit</a>
+              <a href="/delete/<%= task.id %>" class="table">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p>No tasks found. Go <a href="/add">here</a> to add tasks.</p>
+    <% } %>
+  </div>
+</div>
+</body>
+</html>
